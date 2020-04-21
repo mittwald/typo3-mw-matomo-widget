@@ -1,0 +1,18 @@
+services:
+
+  Mittwald\MatomoWidget\:
+    resource: '../Classes/*'
+
+  visitorCount:
+    class: Mittwald\MatomoWidget\Widgets\VisitorCountWidget
+    arguments: ['visitorCount']
+    tags:
+      - name: dashboard.widget
+        widgetGroups: 'systemInfo'
+
+  pageViewCount:
+    class: Mittwald\MatomoWidget\Widgets\PageViewCountWidget
+    arguments: ['pageViewCount']
+    tags:
+      - name: dashboard.widget
+        widgetGroups: 'systemInfo'

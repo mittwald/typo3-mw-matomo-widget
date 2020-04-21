@@ -1,0 +1,15 @@
+{
+	"name": "mittwald/mw_matomo_widget",
+	"description": "Dashboard widget that displays visitor data of your Matomo instance",
+	"require": {
+		"php": ">=7.2.0",
+		"typo3/cms-core": "^10.3",
+		"typo3/cms-dashboard": "^10.3"
+	},
+	"type": "typo3-cms-extension",
+	"autoload": {
+		"psr-4": {
+			"Mittwald\\MatomoWidget\\": "Classes"
+		}
+	}
+}
