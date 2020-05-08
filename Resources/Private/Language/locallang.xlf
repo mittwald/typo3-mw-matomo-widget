@@ -7,7 +7,7 @@
 				<source>Matomo Besucherzahlen (Besucher/Tag)</source>
 			</trans-unit>
 			<trans-unit id="visitorCountWidget.title" xml:space="preserve">
-				<source>Matomo Besucherzahlen</source>
+				<source>Matomo Besucherzahlen (Besucher)</source>
 			</trans-unit>
 			<trans-unit id="visitorCountWidget.description" xml:space="preserve">
 				<source>Zeigt die Besucherzahlen aus Ihrer Matomo Instanz an.</source>
@@ -17,7 +17,7 @@
 				<source>Matomo Seitenaufrufe (Aufrufe/Tag)</source>
 			</trans-unit>
 			<trans-unit id="pageViewCountWidget.title" xml:space="preserve">
-				<source>Matomo Seitenaufrufe</source>
+				<source>Matomo Seitenaufrufe (Aufrufe)</source>
 			</trans-unit>
 			<trans-unit id="pageViewCountWidget.description" xml:space="preserve">
 				<source>Zeigt die Seitenaufrufe aus Ihrer Matomo Instanz an.</source>

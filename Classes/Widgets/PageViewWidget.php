@@ -31,16 +31,15 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
 /**
- * The VisitorCountWidget reads and displays the storage usage
- * of PHP OpCache module
+ * The PageViewWidget reads and displays the storage usage
+ * of PHP APCu module
  */
-class VisitorCountWidget implements ChartDataProviderInterface
+class PageViewWidget implements ChartDataProviderInterface
 {
     private const decimals = 2; // decimals of graph values
     protected $extensionKey = 'mw_matomo_widget';
     protected $lifeTime = 3600;
-    const LANG_FILE = 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf';
-    protected $title = LANG_FILE . ':visitorCountWidget.title.relative';
+
     /**
      * @var TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
      */
@@ -89,13 +88,13 @@ class VisitorCountWidget implements ChartDataProviderInterface
         }
 
         if ($absoluteValues) {
-            $this->visitors30days = json_decode($content30days)[0]->visitors;
-            $this->visitors7days = json_decode($content7days)[0]->visitors;
+            $this->actions30days = json_decode($content30days)[0]->actions;
+            $this->actions7days = json_decode($content7days)[0]->actions;
         } else {
-            $this->visitors30days = number_format(json_decode($content30days)[0]->visitors / 30, 2);
-            $this->visitors7days = number_format(json_decode($content7days)[0]->visitors / 7, 2);
+            $this->actions30days = number_format(json_decode($content30days)[0]->actions / 30, 2);
+            $this->actions7days = number_format(json_decode($content7days)[0]->actions / 7, 2);
         }
-        $this->visitors1day = json_decode($content1day)[0]->visitors;
+        $this->actions1day = json_decode($content1day)[0]->actions;
 
         $this->cache->set($cacheHash, $this->items, [$this->extensionKey], $this->lifeTime);
     }
@@ -125,9 +124,10 @@ class VisitorCountWidget implements ChartDataProviderInterface
             'datasets' => [
                 [
                     'backgroundColor' => ["#FF8700", "#1A568F", "#4C7E3A"],
-                    'data' => [$this->visitors1day, $this->visitors7days, $this->visitors30days]
+                    'data' => [$this->actions1day, $this->actions7days, $this->actions30days]
                 ]
             ],
         ];
     }
+
 }

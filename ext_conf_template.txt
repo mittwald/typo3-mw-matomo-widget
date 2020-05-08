@@ -6,6 +6,3 @@ matomoToken =
 
 # cat=Matomo Settings; type=int+; label=Site ID: Insert the site id of your page in Matomo which should be observed
 matomoSiteId =
-
-# cat=Matomo Settings; type=boolean; label=Absolute Werte: Die Zahlen im Graph werden nicht im Verhältnis zu einem Tag angezeigt.
-absoluteValues =

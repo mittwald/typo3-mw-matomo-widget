@@ -34,7 +34,7 @@ use TYPO3\CMS\Dashboard\Widgets\ChartDataProviderInterface;
  * The VisitorCountWidget reads and displays the storage usage
  * of PHP OpCache module
  */
-class VisitorCountWidget implements ChartDataProviderInterface
+class VisitorCountAbsoluteWidget implements ChartDataProviderInterface
 {
     private const decimals = 2; // decimals of graph values
     protected $extensionKey = 'mw_matomo_widget';
@@ -72,7 +72,7 @@ class VisitorCountWidget implements ChartDataProviderInterface
             $baseurl = 'http://' . $baseurl;
         }
         // Remove protocol prefix
-        $absoluteValues = false;
+        $absoluteValues = true;
 
         $siteId = $backendConfiguration["matomoSiteId"];
         $apitoken = $backendConfiguration["matomoToken"];

@@ -24,23 +24,12 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+
 if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
-call_user_func(static function () {
-    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-    $iconRegistry->registerIcon(
-        'tx-mw_matomo_widget-widget-icon',
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:mw_matomo_widget/Resources/Public/Icons/Widget.svg']
-    );
-    $iconRegistry->registerIcon(
-        'tx-mw_matomo_widget-dashboard-icon',
-        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
-        ['source' => 'EXT:mw_matomo_widget/Resources/Public/Icons/Dashboard.svg']
-    );
-
+call_user_func(static function() {
     if (TYPO3_MODE === 'BE') {
         // Configure caching framework
         if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['mw_matomo_widget'])) {
@@ -54,4 +43,15 @@ call_user_func(static function () {
         }
     }
 
+    $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+    $iconRegistry->registerIcon(
+        'tx-mw_matomo_widget-widget-icon',
+        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        ['source' => 'EXT:mw_matomo_widget/Resources/Public/Icons/Widget.svg']
+    );
+    $iconRegistry->registerIcon(
+        'tx-mw_matomo_widget-dashboard-icon',
+        \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        ['source' => 'EXT:mw_matomo_widget/Resources/Public/Icons/Dashboard.svg']
+    );
 });
