@@ -2,6 +2,7 @@
   "name": "mittwald/mw_matomo_widget",
   "description": "Dashboard widget that displays visitor data of your Matomo instance",
   "type": "typo3-cms-extension",
+  "license": "GPL-2.0-or-later",
   "require": {
     "php": ">=7.4.0",
     "typo3/cms-core": "^11.5",
