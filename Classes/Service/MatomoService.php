@@ -47,8 +47,7 @@ class MatomoService
             ->get(self::EXT_KEY);
     }
 
-    public function getMatomoData(string $data, bool $absolute = false): array
-    {
+    public function getMatomoData(string $data, bool $absolute = false): array {
         $content30days = $this->matomoApiRequest(['lastMinutes' => 43200]);
         $content7days = $this->matomoApiRequest(['lastMinutes' => 10080]);
         $content1day = $this->matomoApiRequest(['lastMinutes' => 1440]);
