@@ -1,33 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0" xmlns:mw="http://typo3.org/schemas/xliff">>
-	<file source-language="en" datatype="plaintext" original="messages" date="2020-03-27T00:00:00Z" product-name="mw_matomo_widget">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2020-03-27T00:00:00Z" product-name="mw_matomo_widget">
 		<header/>
 		<body>
 			<trans-unit id="visitorCountWidget.title.relative" xml:space="preserve">
 				<source>Matomo visitors (visitors/day)</source>
+				<target>Matomo Besucherzahlen (Besucher/Tag)</target>
 			</trans-unit>
 			<trans-unit id="visitorCountWidget.title" xml:space="preserve">
 				<source>Matomo visitors (visitors)</source>
+				<target>Matomo Besucherzahlen (Besucher)</target>
 			</trans-unit>
 			<trans-unit id="visitorCountWidget.description" xml:space="preserve">
 				<source>Shows visitor statistics from your Matomo instance.</source>
+				<target>Zeigt die Besucherzahlen aus Ihrer Matomo Instanz an.</target>
 			</trans-unit>
 
 			<trans-unit id="pageViewCountWidget.title.relative" xml:space="preserve">
 				<source>Matomo pageviews (views/day)</source>
+				<target>Matomo Seitenaufrufe (Aufrufe/Tag)</target>
 			</trans-unit>
 			<trans-unit id="pageViewCountWidget.title" xml:space="preserve">
 				<source>Matomo pageviews (views)</source>
+				<target>Matomo Seitenaufrufe (Aufrufe)</target>
 			</trans-unit>
 			<trans-unit id="pageViewCountWidget.description" xml:space="preserve">
 				<source>Shows visitor statistics from your Matomo instance.</source>
+				<target>Zeigt die Seitenaufrufe aus Ihrer Matomo Instanz an.</target>
 			</trans-unit>
 
 			<trans-unit id="label.hours" xml:space="preserve">
 				<source>hours</source>
+				<target>Stunden</target>
 			</trans-unit>
 			<trans-unit id="label.days" xml:space="preserve">
 				<source>days</source>
+				<target>Tage</target>
 			</trans-unit>
 		</body>
 	</file>

@@ -1,0 +1,36 @@
+name: Code analysis
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        php: ['7.4', '8.0', '8.1']
+    runs-on: ubuntu-latest
+    name: PHP ${{ matrix.php }}
+    
+    steps:
+    - uses: actions/checkout@v1
+      
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php }}
+        extensions: mbstring, intl, json
+        coverage: pcov
+        tools: composer:v2
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Run PHP lint
+      run: find . -name \*.php ! -path "./.Build/*" | xargs -n1 php -d display_errors=stderr -l
+
+    - name: Install composer dependencies
+      run: |
+        composer install --no-progress
+
+    - name: Validate PHP coding guidelines
+      run: |
+        .Build/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php -v --dry-run --stop-on-violation --using-cache=no

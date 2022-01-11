@@ -1,10 +1,14 @@
 services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
 
   Mittwald\MatomoWidget\:
     resource: '../Classes/*'
 
   dashboard.widget.pageView:
-    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
+    class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
     arguments:
       $dataProvider: '@Mittwald\MatomoWidget\Widgets\PageViewWidget'
       $view: '@dashboard.views.widget'
@@ -18,7 +22,7 @@ services:
         height: 'medium'
 
   dashboard.widget.pageViewAbsolute:
-    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
+    class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
     arguments:
       $dataProvider: '@Mittwald\MatomoWidget\Widgets\PageViewAbsoluteWidget'
       $view: '@dashboard.views.widget'
@@ -32,7 +36,7 @@ services:
         height: 'medium'
 
   dashboard.widget.visitorCount:
-    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
+    class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
     arguments:
       $dataProvider: '@Mittwald\MatomoWidget\Widgets\VisitorCountWidget'
       $view: '@dashboard.views.widget'
@@ -46,7 +50,7 @@ services:
         height: 'medium'
 
   dashboard.widget.visitorCountAbsolute:
-    class: 'Mittwald\MatomoWidget\Widgets\AbstractBarChartWidget'
+    class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
     arguments:
       $dataProvider: '@Mittwald\MatomoWidget\Widgets\VisitorCountAbsoluteWidget'
       $view: '@dashboard.views.widget'
