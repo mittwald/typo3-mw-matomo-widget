@@ -83,7 +83,7 @@ class MatomoService
             'token_auth' => $apiToken,
         ];
 
-        $apiArguments = $apiArguments + $arguments;
+        $apiArguments += $arguments;
         $url = $baseUrl . '/index.php?' . http_build_query($apiArguments);
         $cacheHash = sha1($url);
 
