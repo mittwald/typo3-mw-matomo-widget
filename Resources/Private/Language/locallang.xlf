@@ -29,6 +29,10 @@
 			<trans-unit id="label.days" xml:space="preserve">
 				<source>days</source>
 			</trans-unit>
+
+			<trans-unit id="label.matomoData" xml:space="preserve">
+				<source>Matomo data</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

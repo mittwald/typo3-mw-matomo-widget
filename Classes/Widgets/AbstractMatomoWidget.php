@@ -53,6 +53,7 @@ abstract class AbstractMatomoWidget implements ChartDataProviderInterface
             ],
             'datasets' => [
                 [
+                    'label' => $this->getLanguageService()->sL(self::LLL . 'label.matomoData'),
                     'backgroundColor' => ['#FF8700', '#1A568F', '#4C7E3A'],
                     'data' => $this->getData(),
                 ],

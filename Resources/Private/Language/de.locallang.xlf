@@ -37,6 +37,11 @@
 				<source>days</source>
 				<target>Tage</target>
 			</trans-unit>
+
+			<trans-unit id="label.matomoData" xml:space="preserve">
+				<source>Matomo data</source>
+				<target>Matomo Daten</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
