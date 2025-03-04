@@ -7,6 +7,10 @@ Mittwald Matomo Widget is an extension for TYPO3 CMS to show visitor and page vi
 The extension fetches statistics via the Matomo API and uses the TYPO3 caching framework to cache results
 for one hour.
 
+## Requirements
+
+The extension is only compatible with Matomo version 5 or greater.
+
 ## Screenshots
 
 ![Screenshot of the dashboard widgets](Documentation/Images/mw-matomo-widget.png "Screenshot of the dashboard widgets")

@@ -31,6 +31,7 @@ namespace Mittwald\MatomoWidget\Service;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class MatomoService
@@ -40,36 +41,36 @@ class MatomoService
     protected FrontendInterface $cache;
     protected array $extensionConfiguration = [];
 
-    public function __construct()
-    {
+    public function __construct(
+        protected readonly RequestFactory $requestFactory
+    ) {
         $this->cache = GeneralUtility::makeInstance(CacheManager::class)->getCache(self::EXT_KEY);
         $this->extensionConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class)
             ->get(self::EXT_KEY);
     }
 
-    public function getMatomoData(string $data, bool $absolute = false): array
+    public function getMatomoData(string $method, bool $absolute = false): array
     {
-        $content30days = $this->matomoApiRequest(['lastMinutes' => 43200]);
-        $content7days = $this->matomoApiRequest(['lastMinutes' => 10080]);
-        $content1day = $this->matomoApiRequest(['lastMinutes' => 1440]);
+        $content30days = $this->matomoApiRequest($method, ['period' => 'day', 'date' => 'last30']);
+        $content7days = $this->matomoApiRequest($method, ['period' => 'day', 'date' => 'last7']);
+        $content1day = $this->matomoApiRequest($method, ['period' => 'day', 'date' => 'today']);
 
         if ($content1day === '' || $content7days === '' || $content30days === '') {
             return [0, 0, 0];
         }
 
-        if ($absolute) {
-            $actions30days = json_decode($content30days)[0]->$data;
-            $actions7days = json_decode($content7days)[0]->$data;
-        } else {
-            $actions30days = number_format(json_decode($content30days)[0]->$data / 30, 2);
-            $actions7days = number_format(json_decode($content7days)[0]->$data / 7, 2);
+        $actions30days = array_sum(array_values(json_decode($content30days, true)));
+        $actions7days = array_sum(array_values(json_decode($content7days, true)));
+        $actions1day = array_sum(array_values(json_decode($content1day, true)));
+        if (!$absolute) {
+            $actions30days = number_format($actions30days / 30, 2);
+            $actions7days = number_format($actions7days / 7, 2);
         }
-        $actions1day = json_decode($content1day)[0]->$data;
 
         return [$actions1day, $actions7days, $actions30days];
     }
 
-    protected function matomoApiRequest(array $arguments = []): string
+    protected function matomoApiRequest(string $method, array $arguments = []): string
     {
         $siteId = $this->extensionConfiguration['matomoSiteId'] ?? 1;
         $apiToken = $this->extensionConfiguration['matomoToken'] ?? '';
@@ -77,10 +78,15 @@ class MatomoService
 
         $apiArguments = [
             'module' => 'API',
-            'method' => 'Live.getCounters',
+            'method' => $method,
             'idSite' => $siteId,
             'format' => 'JSON',
-            'token_auth' => $apiToken,
+        ];
+
+        $requestOptions = [
+            'form_params' => [
+                'token_auth' => $apiToken,
+            ],
         ];
 
         $apiArguments += $arguments;
@@ -89,14 +95,18 @@ class MatomoService
 
         $result = $this->cache->get($cacheHash);
         if ($result === false || $result === null) {
-            $result = GeneralUtility::getUrl($url);
+            $response = $this->requestFactory->request($url, 'POST', $requestOptions);
+            if ($response->getStatusCode() !== 200) {
+                return '';
+            }
+            $result = (string)$response->getBody();
+
+            if (!$this->isJson($result)) {
+                return '';
+            }
+            $this->cache->set($cacheHash, $result, [], self::CACHE_LIFETIME);
         }
 
-        if ($result === false || !$this->isJson($result)) {
-            return '';
-        }
-
-        $this->cache->set($cacheHash, $result, [], self::CACHE_LIFETIME);
         return $result;
     }
 

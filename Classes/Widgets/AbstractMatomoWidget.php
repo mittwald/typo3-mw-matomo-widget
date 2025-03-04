@@ -47,7 +47,7 @@ abstract class AbstractMatomoWidget implements ChartDataProviderInterface
     {
         return [
             'labels' => [
-                '24 ' . $this->getLanguageService()->sL(self::LLL . 'label.hours'),
+                $this->getLanguageService()->sL(self::LLL . 'label.today'),
                 '7 ' . $this->getLanguageService()->sL(self::LLL . 'label.days'),
                 '30 ' . $this->getLanguageService()->sL(self::LLL . 'label.days'),
             ],
