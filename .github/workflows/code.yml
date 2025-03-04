@@ -29,6 +29,7 @@ jobs:
 
     - name: Install composer dependencies
       run: |
+        cd .Build/
         composer install --no-progress
 
     - name: Validate PHP coding guidelines
