@@ -11,7 +11,6 @@ services:
     class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
     arguments:
       $dataProvider: '@Mittwald\MatomoWidget\Widgets\PageViewWidget'
-      $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
         identifier: 'pageView'
@@ -25,7 +24,6 @@ services:
     class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
     arguments:
       $dataProvider: '@Mittwald\MatomoWidget\Widgets\PageViewAbsoluteWidget'
-      $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
         identifier: 'pageViewAbsolute'
@@ -39,7 +37,6 @@ services:
     class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
     arguments:
       $dataProvider: '@Mittwald\MatomoWidget\Widgets\VisitorCountWidget'
-      $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
         identifier: 'visitorCount'
@@ -53,7 +50,6 @@ services:
     class: 'TYPO3\CMS\Dashboard\Widgets\BarChartWidget'
     arguments:
       $dataProvider: '@Mittwald\MatomoWidget\Widgets\VisitorCountAbsoluteWidget'
-      $view: '@dashboard.views.widget'
     tags:
       - name: dashboard.widget
         identifier: 'visitorCountAbsolute'

@@ -36,18 +36,13 @@ abstract class AbstractMatomoWidget implements ChartDataProviderInterface
 {
     private const LLL = 'LLL:EXT:mw_matomo_widget/Resources/Private/Language/locallang.xlf:';
 
-    protected MatomoService $matomoService;
-
-    public function __construct(MatomoService $matomoService)
-    {
-        $this->matomoService = $matomoService;
-    }
+    public function __construct(protected readonly MatomoService $matomoService) {}
 
     public function getChartData(): array
     {
         return [
             'labels' => [
-                '24 ' . $this->getLanguageService()->sL(self::LLL . 'label.hours'),
+                $this->getLanguageService()->sL(self::LLL . 'label.today'),
                 '7 ' . $this->getLanguageService()->sL(self::LLL . 'label.days'),
                 '30 ' . $this->getLanguageService()->sL(self::LLL . 'label.days'),
             ],

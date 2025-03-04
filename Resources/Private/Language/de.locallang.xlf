@@ -29,6 +29,10 @@
 				<target>Zeigt die Seitenaufrufe aus Ihrer Matomo Instanz an.</target>
 			</trans-unit>
 
+			<trans-unit id="label.today" xml:space="preserve">
+				<source>Today</source>
+				<target>Heute</target>
+			</trans-unit>
 			<trans-unit id="label.hours" xml:space="preserve">
 				<source>hours</source>
 				<target>Stunden</target>

@@ -6,7 +6,7 @@ jobs:
   build:
     strategy:
       matrix:
-        php: ['8.1', '8.2']
+        php: ['8.2', '8.3']
     runs-on: ubuntu-latest
     name: PHP ${{ matrix.php }}
     
@@ -33,4 +33,4 @@ jobs:
 
     - name: Validate PHP coding guidelines
       run: |
-        .Build/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php -v --dry-run --stop-on-violation --using-cache=no
+        .Build/vendor/bin/php-cs-fixer fix --config=.Build/php-cs-fixer/.php-cs-fixer.php -v --dry-run --stop-on-violation --using-cache=no

@@ -1,0 +1,24 @@
+{
+	"name": "mittwald/mw-matomo-widget-composer",
+	"description": "composer.json for TYPO3 build",
+	"repositories": [
+		{
+			"type": "path",
+			"url": "../"
+		}
+	],
+	"require": {
+		"typo3/cms-core": "^13.4",
+		"typo3/cms-dashboard": "^13.4",
+		"mittwald/mw_matomo_widget": "@dev"
+	},
+	"require-dev": {
+		"friendsofphp/php-cs-fixer": "^3.49"
+	},
+	"config": {
+		"allow-plugins": {
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		}
+	}
+}

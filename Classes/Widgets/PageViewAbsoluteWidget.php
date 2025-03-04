@@ -32,6 +32,6 @@ class PageViewAbsoluteWidget extends AbstractMatomoWidget
 {
     protected function getData(): array
     {
-        return $this->matomoService->getMatomoData('actions', true);
+        return $this->matomoService->getMatomoData('VisitsSummary.getActions', true);
     }
 }

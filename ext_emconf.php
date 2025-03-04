@@ -9,7 +9,7 @@ $EM_CONF[$_EXTKEY] = [
     'author_company' => 'Mittwald CM Service GmbH',
     'state' => 'stable',
     'clearCacheOnLoad' => true,
-    'version' => '3.0.0',
+    'version' => '4.0.0',
     'uploadfolder' => false,
     'autoload' => [
         'psr-4' => [
@@ -18,7 +18,7 @@ $EM_CONF[$_EXTKEY] = [
     ],
     'constraints' => [
         'depends' => [
-            'typo3' => '12.4.0-12.4.99',
+            'typo3' => '13.4.0-13.4.99',
         ],
         'conflicts' => [],
         'suggests' => [],

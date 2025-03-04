@@ -23,6 +23,9 @@
 				<source>Shows visitor statistics from your Matomo instance.</source>
 			</trans-unit>
 
+			<trans-unit id="label.today" xml:space="preserve">
+				<source>Today</source>
+			</trans-unit>
 			<trans-unit id="label.hours" xml:space="preserve">
 				<source>hours</source>
 			</trans-unit>

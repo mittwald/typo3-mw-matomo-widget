@@ -32,6 +32,6 @@ class VisitorCountWidget extends AbstractMatomoWidget
 {
     protected function getData(): array
     {
-        return $this->matomoService->getMatomoData('visitors');
+        return $this->matomoService->getMatomoData('VisitsSummary.getUniqueVisitors');
     }
 }
